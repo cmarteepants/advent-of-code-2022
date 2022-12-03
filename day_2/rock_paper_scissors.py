@@ -30,25 +30,25 @@ class Score(Enum):
 
 RULES = {
     # Part 1
-    (PlayersChoice.ROCK, MyChoice.PAPER): Score.WIN.value,
-    (PlayersChoice.ROCK, MyChoice.SCISSORS): Score.LOSE.value,
-    (PlayersChoice.ROCK, MyChoice.ROCK): Score.DRAW.value,
-    (PlayersChoice.PAPER, MyChoice.SCISSORS): Score.WIN.value,
-    (PlayersChoice.PAPER, MyChoice.PAPER): Score.DRAW.value,
-    (PlayersChoice.PAPER, MyChoice.ROCK): Score.LOSE.value,
-    (PlayersChoice.SCISSORS, MyChoice.ROCK): Score.WIN.value,
-    (PlayersChoice.SCISSORS, MyChoice.SCISSORS): Score.DRAW.value,
-    (PlayersChoice.SCISSORS, MyChoice.PAPER): Score.LOSE.value,
+    (PlayersChoice.ROCK, MyChoice.PAPER): Score.WIN,
+    (PlayersChoice.ROCK, MyChoice.SCISSORS): Score.LOSE,
+    (PlayersChoice.ROCK, MyChoice.ROCK): Score.DRAW,
+    (PlayersChoice.PAPER, MyChoice.SCISSORS): Score.WIN,
+    (PlayersChoice.PAPER, MyChoice.PAPER): Score.DRAW,
+    (PlayersChoice.PAPER, MyChoice.ROCK): Score.LOSE,
+    (PlayersChoice.SCISSORS, MyChoice.ROCK): Score.WIN,
+    (PlayersChoice.SCISSORS, MyChoice.SCISSORS): Score.DRAW,
+    (PlayersChoice.SCISSORS, MyChoice.PAPER): Score.LOSE,
     # Part 2
-    (PlayersChoice.ROCK.value, DesiredOutcome.WIN): MyChoice.PAPER.value,
-    (PlayersChoice.ROCK.value, DesiredOutcome.LOSE): MyChoice.SCISSORS.value,
-    (PlayersChoice.ROCK.value, DesiredOutcome.DRAW): MyChoice.ROCK.value,
-    (PlayersChoice.PAPER.value, DesiredOutcome.WIN): MyChoice.SCISSORS.value,
-    (PlayersChoice.PAPER.value, DesiredOutcome.DRAW): MyChoice.PAPER.value,
-    (PlayersChoice.PAPER.value, DesiredOutcome.LOSE): MyChoice.ROCK.value,
-    (PlayersChoice.SCISSORS.value, DesiredOutcome.WIN): MyChoice.ROCK.value,
-    (PlayersChoice.SCISSORS.value, DesiredOutcome.DRAW): MyChoice.SCISSORS.value,
-    (PlayersChoice.SCISSORS.value, DesiredOutcome.LOSE): MyChoice.PAPER.value,
+    (PlayersChoice.ROCK, DesiredOutcome.WIN): MyChoice.PAPER,
+    (PlayersChoice.ROCK, DesiredOutcome.LOSE): MyChoice.SCISSORS,
+    (PlayersChoice.ROCK, DesiredOutcome.DRAW): MyChoice.ROCK,
+    (PlayersChoice.PAPER, DesiredOutcome.WIN): MyChoice.SCISSORS,
+    (PlayersChoice.PAPER, DesiredOutcome.DRAW): MyChoice.PAPER,
+    (PlayersChoice.PAPER, DesiredOutcome.LOSE): MyChoice.ROCK,
+    (PlayersChoice.SCISSORS, DesiredOutcome.WIN): MyChoice.ROCK,
+    (PlayersChoice.SCISSORS, DesiredOutcome.DRAW): MyChoice.SCISSORS,
+    (PlayersChoice.SCISSORS, DesiredOutcome.LOSE): MyChoice.PAPER,
 }
 
 
@@ -62,7 +62,7 @@ def main():
     for hand in rounds:
         players_hand = PlayersChoice(hand[0])
         my_hand = MyChoice(hand[1])
-        score += Score[my_hand.name].value + RULES[(players_hand, my_hand)]
+        score += Score[my_hand.name].value + RULES[(players_hand, my_hand)].value
 
     print(f"The total score, assuming the second column represents the hand I should play, is {score}")
 
